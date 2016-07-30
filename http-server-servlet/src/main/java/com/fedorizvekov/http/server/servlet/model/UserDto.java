@@ -1,5 +1,9 @@
 package com.fedorizvekov.http.server.servlet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto {
 
     private String email;
@@ -12,6 +16,13 @@ public class UserDto {
     }
 
 
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.firstName = name;
+    }
+
+
+    @JsonProperty("firstName")
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -24,12 +35,15 @@ public class UserDto {
 
     @Override
     public String toString() {
-        return new StringBuilder().append("email: ")
+        return new StringBuilder()
+                .append("User contain: ( ")
+                .append("email = ")
                 .append(email)
-                .append(", firstName: ")
+                .append(", firstName = ")
                 .append(firstName)
-                .append(", lastName: ")
+                .append(", lastName = ")
                 .append(lastName)
+                .append(" )")
                 .toString();
     }
 
