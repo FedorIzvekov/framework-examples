@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    width: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #e0e0e0;
+    font-size: 1rem;
+}
+
+h3 {
+  text-align: center;
+  color: #000;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+  width: 31.25rem;
+  padding: 0.5rem;
+  border-radius: 1.25rem;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 100px 100px rgb(0 0 0 / 10%);
+}
+
+.form {
+  position: relative;
+  padding: 0.6rem 1rem;
+}
+
+.wrapper-box {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+input,
+button {
+  height: 2.5rem;
+  border-radius: 2rem;
+  outline: none;
+  font-weight: 600;
+  border-radius: 2em;
+  transition: 0.3s;
+}
+
+input {
+  border: 0.2rem solid #ff9900;
+  padding-left: 1.2rem;
+  font-size: 0.8rem;
+  color: #000;
+}
+
+button {
+  border: 0;
+  width: 6.875rem;
+  background: #ff9900;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #fff;
+  background: #000;
+}
+
+#host {
+  width: 100%;
+}
+
+#username {
+  width: 49%;
+}
+
+#message {
+  width: 74%;
+}
+
+textarea {
+  border-radius: 2em;
+  border: 0.2rem solid #ff9900;
+  padding: 1rem 1.3rem;
+}
