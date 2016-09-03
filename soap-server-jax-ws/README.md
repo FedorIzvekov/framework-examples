@@ -19,3 +19,8 @@ curl "http://localhost:8080/registration?wsdl"
 ```
 curl -H "Content-Type: text/xml;charset=UTF-8" -d @client_request.xml http://localhost:8080/registration
 ```
+
+* WSDL Generation
+```
+wsgen -cp target/classes -wsdl -r ./wsdl -verbose com.fedorizvekov.soap.server.jax.ws.service.impl.RegistrationServiceImpl
+```

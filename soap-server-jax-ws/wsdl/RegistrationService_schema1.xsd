@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://service.ws.jax.server.soap.fedorizvekov.com/" xmlns:tns="http://service.ws.jax.server.soap.fedorizvekov.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://model.ws.jax.server.soap.fedorizvekov.com/">
+
+  <xs:import namespace="http://model.ws.jax.server.soap.fedorizvekov.com/" schemaLocation="RegistrationService_schema2.xsd"/>
+
+  <xs:element name="registration" type="tns:registration"/>
+
+  <xs:element name="registrationResponse" type="tns:registrationResponse"/>
+
+  <xs:complexType name="registration">
+    <xs:sequence>
+      <xs:element ref="ns1:registrationRequest" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="userDto">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+      <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registrationResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://model.ws.jax.server.soap.fedorizvekov.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://service.ws.jax.server.soap.fedorizvekov.com/">
+
+  <xs:import namespace="http://service.ws.jax.server.soap.fedorizvekov.com/" schemaLocation="RegistrationService_schema1.xsd"/>
+
+  <xs:element name="registrationRequest" type="ns1:userDto"/>
+</xs:schema>
+
