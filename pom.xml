@@ -30,6 +30,7 @@
         <module>http-client-httpcomponents</module>
         <module>http-server-servlet</module>
         <module>websocket-server-servlet</module>
+        <module>soap-server-jax-ws</module>
     </modules>
 
     <dependencyManagement>

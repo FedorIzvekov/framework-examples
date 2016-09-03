@@ -6,3 +6,4 @@ This project has modules:
 * [http-server-servlet](http-server-servlet/README.md#http-server-servlet)
 * [websocket-server-servlet](websocket-server-servlet/README.md#websocket-server-servlet)
 * [websocket-client-js](websocket-client-js/README.md#websocket-client-js)
+* [soap-server-jax-ws](soap-server-jax-ws/README.md#soap-server-jax-ws)
