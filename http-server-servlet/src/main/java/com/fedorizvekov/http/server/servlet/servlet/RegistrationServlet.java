@@ -7,13 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fedorizvekov.http.server.servlet.model.UserDto;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
-
-    Logger log = LoggerFactory.getLogger(RegistrationServlet.class);
 
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {

@@ -2,6 +2,7 @@ package com.fedorizvekov.http.client.httpcomponents;
 
 import java.io.InputStream;
 import java.util.Properties;
+import lombok.extern.log4j.Log4j2;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -9,14 +10,11 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Log4j2
 public class HttpClient {
 
     public static void main(String[] args) throws Exception {
-
-        Logger log = LoggerFactory.getLogger(HttpClient.class);
 
         Properties properties = new Properties();
 

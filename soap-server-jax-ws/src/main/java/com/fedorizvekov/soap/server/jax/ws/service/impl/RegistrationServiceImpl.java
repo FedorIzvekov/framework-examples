@@ -3,13 +3,11 @@ package com.fedorizvekov.soap.server.jax.ws.service.impl;
 import javax.jws.WebService;
 import com.fedorizvekov.soap.server.jax.ws.model.UserDto;
 import com.fedorizvekov.soap.server.jax.ws.service.RegistrationService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
-@WebService(endpointInterface = "com.fedorizvekov.soap.server.jax.ws.service.RegistrationService")
+@Log4j2
+@WebService(endpointInterface = "com.fedorizvekov.soap.jax.ws.server.service.RegistrationService")
 public class RegistrationServiceImpl implements RegistrationService {
-
-    Logger log = LoggerFactory.getLogger(RegistrationServiceImpl.class);
 
     @Override
     public String registration(UserDto userDto) {

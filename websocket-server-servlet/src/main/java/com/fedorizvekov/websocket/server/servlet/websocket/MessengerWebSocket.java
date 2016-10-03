@@ -2,21 +2,19 @@ package com.fedorizvekov.websocket.server.servlet.websocket;
 
 import java.io.IOException;
 import java.util.Set;
+import lombok.extern.log4j.Log4j2;
 import org.eclipse.jetty.util.ConcurrentHashSet;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-
+@Log4j2
 @WebSocket
 public class MessengerWebSocket {
 
     private static final MessengerWebSocket webSocket = new MessengerWebSocket();
-    private final Logger log = LoggerFactory.getLogger(MessengerWebSocket.class);
     private final Set<Session> webSocketSessions = new ConcurrentHashSet<>();
 
     private MessengerWebSocket() {
