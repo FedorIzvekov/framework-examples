@@ -24,6 +24,7 @@
 
     <modules>
         <module>http-client-httpcomponents</module>
+        <module>http-client-spring</module>
         <module>http-server-servlet</module>
         <module>http-server-spring</module>
         <module>websocket-server-servlet</module>
