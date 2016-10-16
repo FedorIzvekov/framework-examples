@@ -27,6 +27,7 @@
         <module>http-client-spring</module>
         <module>http-server-servlet</module>
         <module>http-server-spring</module>
+        <module>websocket-client-spring</module>
         <module>websocket-server-servlet</module>
         <module>websocket-server-spring</module>
         <module>soap-server-jax-ws</module>
