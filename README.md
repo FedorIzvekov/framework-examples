@@ -1,5 +1,5 @@
-# Project protocol-templates
-Project demonstrating client-server interactions across multiple protocols
+# Project framework-examples
+Project demonstrating interactions with various frameworks and protocols.
 
 This project has modules: 
 * [http-client-httpcomponents](http-client-httpcomponents/README.md#http-client-httpcomponents)

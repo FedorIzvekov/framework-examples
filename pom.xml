@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.fedorizvekov</groupId>
-    <artifactId>protocol-templates</artifactId>
-    <name>protocol-templates</name>
-    <description>Project demonstrating client-server interactions across multiple protocols</description>
+    <artifactId>framework-examples</artifactId>
+    <name>framework-examples</name>
+    <description>Project demonstrating interactions with various frameworks and protocols.</description>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
