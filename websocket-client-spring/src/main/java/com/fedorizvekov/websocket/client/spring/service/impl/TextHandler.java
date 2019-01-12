@@ -15,20 +15,20 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 public class TextHandler extends TextWebSocketHandler {
 
     @Override
-    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+    public void afterConnectionEstablished(WebSocketSession session) {
         WebSocketSessionWrapper.setSession(session);
         log.info("Enter message or \"exit\"");
     }
 
 
     @Override
-    public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+    public void handleTextMessage(WebSocketSession session, TextMessage message) {
         log.info("RECEIVED: {}", message.getPayload());
     }
 
 
     @Override
-    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
         WebSocketSessionWrapper.removeSession();
         log.info("DISCONNECTED");
     }

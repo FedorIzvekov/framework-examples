@@ -9,7 +9,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketHttpHeaders;
-import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.client.WebSocketConnectionManager;
 
 @Log4j2
@@ -21,26 +20,26 @@ public class WebSocketClientServiceImpl implements WebSocketClientService {
 
 
     public void runClient() {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        try (var reader = new BufferedReader(new InputStreamReader(System.in))) {
 
             log.info("Enter username:");
-            String username = reader.readLine().trim();
+            var username = reader.readLine().trim();
             log.info("Username: {}", username);
 
-            WebSocketHttpHeaders headers = new WebSocketHttpHeaders();
+            var headers = new WebSocketHttpHeaders();
             headers.add("username", username);
             connectionManager.setHeaders(headers);
             connectionManager.start();
 
             while (true) {
-                String message = reader.readLine();
+                var message = reader.readLine();
 
                 if ("exit".equalsIgnoreCase(message)) {
                     connectionManager.stop();
                     break;
                 } else {
 
-                    WebSocketSession session = WebSocketSessionWrapper.getSession();
+                    var session = WebSocketSessionWrapper.getSession();
 
                     if (session != null && session.isOpen()) {
                         session.sendMessage(new TextMessage(message));

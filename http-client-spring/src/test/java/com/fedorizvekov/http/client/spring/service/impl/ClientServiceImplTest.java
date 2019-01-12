@@ -41,8 +41,8 @@ public class ClientServiceImplTest {
 
     @Test
     public void should_exchange_restTemplate() {
-        ResponseEntity<String> mockResponse = new ResponseEntity<>("Response body", CREATED);
-        when(restTemplate.exchange(any(RequestEntity.class), eq(String.class))).thenReturn(mockResponse);
+        when(restTemplate.exchange(any(RequestEntity.class), eq(String.class)))
+                .thenReturn(new ResponseEntity<>("Response body", CREATED));
 
         service.postRequest();
 

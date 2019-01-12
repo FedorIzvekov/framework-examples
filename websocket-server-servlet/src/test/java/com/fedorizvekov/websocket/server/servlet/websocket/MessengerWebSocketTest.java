@@ -6,9 +6,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.eclipse.jetty.websocket.api.RemoteEndpoint;
 import org.eclipse.jetty.websocket.api.Session;
@@ -37,9 +35,7 @@ public class MessengerWebSocketTest {
     @Before
     public void setUp() {
         when(session.getUpgradeRequest()).thenReturn(upgradeRequest);
-        when(upgradeRequest.getParameterMap()).thenReturn(new HashMap<String, List<String>>() {{
-            put("username", singletonList("TestUserName"));
-        }});
+        when(upgradeRequest.getParameterMap()).thenReturn(Map.of("username", singletonList("TestUserName")));
     }
 
 
@@ -77,8 +73,9 @@ public class MessengerWebSocketTest {
     }
 
 
+    @SuppressWarnings("unchecked")
     private Set<Session> getPrivateSessions() throws Exception {
-        Field field = MessengerWebSocket.class.getDeclaredField("webSocketSessions");
+        var field = MessengerWebSocket.class.getDeclaredField("webSocketSessions");
         field.setAccessible(true);
         return (Set<Session>) field.get(messengerWebSocket);
     }

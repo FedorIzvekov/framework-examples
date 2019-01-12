@@ -19,9 +19,8 @@ public class RegistrationServlet extends HttpServlet {
         log.info("REQUEST POST, endpoint /registration was called");
 
         try {
-
-            String json = request.getReader().readLine();
-            UserDto userDto = new ObjectMapper().readValue(json, UserDto.class);
+            var json = request.getReader().readLine();
+            var userDto = new ObjectMapper().readValue(json, UserDto.class);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
             response.getWriter().write("REGISTRATION COMPLETED, " + userDto);

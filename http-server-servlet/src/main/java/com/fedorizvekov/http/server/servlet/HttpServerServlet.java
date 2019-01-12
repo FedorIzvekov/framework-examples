@@ -1,6 +1,5 @@
 package com.fedorizvekov.http.server.servlet;
 
-import java.io.InputStream;
 import java.util.EnumSet;
 import java.util.Properties;
 import javax.servlet.DispatcherType;
@@ -15,20 +14,20 @@ public class HttpServerServlet {
 
     public static void main(String[] args) throws Exception {
 
-        Properties properties = new Properties();
+        var properties = new Properties();
 
-        try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties")) {
+        try (var input = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties")) {
             properties.load(input);
         }
 
-        int port = Integer.parseInt(properties.getProperty("server.port"));
+        var port = Integer.parseInt(properties.getProperty("server.port"));
 
-        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        var context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         context.addServlet(new ServletHolder(new RegistrationServlet()), "/registration");
         context.addFilter(new FilterHolder(new CorsFilter()), "/*", EnumSet.of(DispatcherType.REQUEST));
 
-        Server server = new Server(port);
+        var server = new Server(port);
         server.setHandler(context);
         server.start();
         server.join();

@@ -6,14 +6,12 @@ import com.fedorizvekov.soap.server.jax.ws.service.RegistrationService;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-@WebService(endpointInterface = "com.fedorizvekov.soap.jax.ws.server.service.RegistrationService")
+@WebService(endpointInterface = "com.fedorizvekov.soap.server.jax.ws.service.RegistrationService")
 public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public String registration(UserDto userDto) {
-
         log.info("REQUEST POST, endpoint /registration was called");
-
         return "REGISTRATION COMPLETED, " + userDto;
     }
 }

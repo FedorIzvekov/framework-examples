@@ -1,5 +1,5 @@
 # Websocket-server-servlet
-This project implements a WebSocket server using Websocket Servlet and Jetty Server
+This project implements a WebSocket server using WebSocket Servlet and Jetty Server
 
 * Run:
 ```

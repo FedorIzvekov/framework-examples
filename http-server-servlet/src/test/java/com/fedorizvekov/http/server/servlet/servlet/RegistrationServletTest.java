@@ -11,7 +11,6 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -30,12 +29,6 @@ public class RegistrationServletTest {
     private RegistrationServlet registrationServlet;
 
     private StringWriter stringWriter;
-
-
-    @Before
-    public void setUp() {
-        when(servletRequest.getRequestURL()).thenReturn(new StringBuffer("http://localhost:8080/registration"));
-    }
 
 
     @Test

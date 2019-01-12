@@ -1,5 +1,7 @@
 package com.fedorizvekov.websocket.server.spring.handler;
 
+import static java.util.Objects.requireNonNull;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,36 +20,33 @@ public class WebsocketServerHandler extends TextWebSocketHandler {
 
 
     @Override
-    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        String userName = getUserName(session);
+    public void afterConnectionEstablished(WebSocketSession session) {
+        var userName = getUserName(session);
         sessions.put(userName, session);
-
         broadcast(userName + ": CONNECTED");
     }
 
 
     @Override
-    public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        String userName = getUserName(session);
-
+    public void handleTextMessage(WebSocketSession session, TextMessage message) {
+        var userName = getUserName(session);
         broadcast(userName + ": " + message.getPayload());
     }
 
 
     @Override
-    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        String userName = getUserName(session);
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
+        var userName = getUserName(session);
         sessions.remove(userName);
-
         broadcast(userName + ": DISCONNECTED");
     }
 
 
     private void broadcast(String message) {
         log.info(message);
-        TextMessage textMessage = new TextMessage(message);
+        var textMessage = new TextMessage(message);
 
-        for (WebSocketSession session : sessions.values()) {
+        for (var session : sessions.values()) {
 
             try {
                 session.sendMessage(textMessage);
@@ -66,7 +65,7 @@ public class WebsocketServerHandler extends TextWebSocketHandler {
         if (session.getHandshakeHeaders().containsKey("username")) {
             return session.getHandshakeHeaders().getFirst("username");
         } else {
-            return session.getUri().getQuery().split("=")[1];
+            return requireNonNull(session.getUri()).getQuery().split("=")[1];
         }
 
     }

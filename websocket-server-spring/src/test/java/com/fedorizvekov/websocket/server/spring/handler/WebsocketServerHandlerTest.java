@@ -14,7 +14,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.internal.util.reflection.Whitebox;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.socket.CloseStatus;
@@ -50,7 +49,10 @@ public class WebsocketServerHandlerTest {
 
     @Test
     public void should_receive_url_params_and_send_textMessage() throws Exception {
-        Whitebox.setInternalState(handler, "sessions", singletonMap("testUser", session));
+        var field = WebsocketServerHandler.class.getDeclaredField("sessions");
+        field.setAccessible(true);
+        field.set(handler, singletonMap("testUser", session));
+
         when(session.getHandshakeHeaders()).thenReturn(httpHeaders);
         when(session.getUri()).thenReturn(new URI("ws://localhost:8080/messenger?username=testUser"));
 
@@ -63,11 +65,13 @@ public class WebsocketServerHandlerTest {
 
     @Test
     public void should_receive_header_params_and_send_textMessage() throws Exception {
-        Whitebox.setInternalState(handler, "sessions", singletonMap("testUser", session));
+        var field = WebsocketServerHandler.class.getDeclaredField("sessions");
+        field.setAccessible(true);
+        field.set(handler, singletonMap("testUser", session));
+
         when(session.getHandshakeHeaders()).thenReturn(httpHeaders);
         when(httpHeaders.containsKey("username")).thenReturn(true);
         when(httpHeaders.getFirst("username")).thenReturn("testUser");
-        when(session.getUri()).thenReturn(new URI("ws://localhost:8080/messenger"));
 
         handler.handleTextMessage(session, new TextMessage("Test message"));
 
@@ -78,11 +82,15 @@ public class WebsocketServerHandlerTest {
 
     @Test
     public void should_send_disconnectedMessage() throws Exception {
-        Map<String, WebSocketSession> sessions = new HashMap() {{
+        Map<String, WebSocketSession> sessions = new HashMap<>() {{
             put("testUser", session);
             put("testUser2", session);
         }};
-        Whitebox.setInternalState(handler, "sessions", sessions);
+
+        var field = WebsocketServerHandler.class.getDeclaredField("sessions");
+        field.setAccessible(true);
+        field.set(handler, sessions);
+
         when(session.getHandshakeHeaders()).thenReturn(httpHeaders);
         when(session.getUri()).thenReturn(new URI("ws://localhost:8080/messenger?username=testUser"));
 

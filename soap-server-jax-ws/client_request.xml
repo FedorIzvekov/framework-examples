@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:service="http://service.server.ws.jax.soap.fedorizvekov.com/"
-                  xmlns:obj="http://model.server.ws.jax.soap.fedorizvekov.com/">
+                  xmlns:service="http://service.ws.jax.server.soap.fedorizvekov.com/"
+                  xmlns:obj="http://model.ws.jax.server.soap.fedorizvekov.com/">
     <soapenv:Header/>
     <soapenv:Body>
         <service:registration>

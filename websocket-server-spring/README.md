@@ -1,6 +1,6 @@
 # Websocket-server-spring
 
-This project implements Websocket server using Spring Framework
+This project implements WebsSocket server using Spring Framework
 
 ## Building, Running and Checking
 

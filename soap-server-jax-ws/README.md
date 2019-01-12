@@ -12,17 +12,12 @@ java -jar ./target/soap-server-jax-ws-1.0.0-SNAPSHOT.jar
 
 * Check WSDL:
 ```
-curl "http://localhost:8080/registration?wsdl"
+curl "http://localhost:8082/registration?wsdl"
 ```
 
 * Check server:
 ```
-curl -H "Content-Type: text/xml;charset=UTF-8" -d @client_request.xml http://localhost:8080/registration
-```
-
-* WSDL Generation
-```
-wsgen -cp target/classes -wsdl -r ./wsdl -verbose com.fedorizvekov.soap.server.jax.ws.service.impl.RegistrationServiceImpl
+curl -H "Content-Type: text/xml;charset=UTF-8" -d @client_request.xml http://localhost:8082/registration
 ```
 
 * Generation Client from WSDL

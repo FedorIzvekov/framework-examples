@@ -14,16 +14,10 @@ public class UserDto {
 
     @Override
     public String toString() {
-        return new StringBuilder()
-                .append("User contain: ( ")
-                .append("email = ")
-                .append(email)
-                .append(", firstName = ")
-                .append(firstName)
-                .append(", lastName = ")
-                .append(lastName)
-                .append(" )")
-                .toString();
+        return "User contain: ( " +
+                "email = " + email +
+                ", firstName = " + firstName +
+                ", lastName = " + lastName + " )";
     }
 
 }
