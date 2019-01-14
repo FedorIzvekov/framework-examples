@@ -1,13 +1,19 @@
-# Websocket-server-spring
+# WebSocket server spring
 
-This project implements WebsSocket server using Spring Framework
+This project implements WebSocket server using Spring Framework
 
-## Building, Running and Checking
+## Table of Contents
+
+* [Return to main README.md](../README.md#project-framework-examples)
+* [Building and Running](#building-and-running)
+* [Stopping](#stopping)
+
+## Building and Running
 
 1. Navigate to the project directory:
 
 ```
-cd <projects_directory>/websocket-server-spring
+cd <projects_directory>/framework-examples/websocket-server-spring
 ```
 
 2. Build the project:
@@ -16,8 +22,16 @@ cd <projects_directory>/websocket-server-spring
 mvn clean install
 ```
 
-3. Run the server:
+3. Run the application:
 
 ```
 java -jar ./target/websocket-server-spring-1.0.0-SNAPSHOT.jar
+```
+
+## Stopping
+
+Shutdown the application:
+
+```
+curl -v -X POST http://localhost:8084/actuator/shutdown
 ```

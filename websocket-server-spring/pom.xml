@@ -11,12 +11,12 @@
 
     <artifactId>websocket-server-spring</artifactId>
     <name>websocket-server-spring</name>
-    <description>This project implements Websocket server using Spring Framework</description>
+    <description>This project implements WebSocket server using Spring Framework</description>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
-        <mainClass>com.fedorizvekov.websocket.server.spring.WebsocketServerSpring</mainClass>
+        <mainClass>com.fedorizvekov.websocket.server.spring.WebSocketServerSpring</mainClass>
     </properties>
 
     <dependencies>
@@ -40,6 +40,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
         <dependency>
@@ -54,6 +58,21 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

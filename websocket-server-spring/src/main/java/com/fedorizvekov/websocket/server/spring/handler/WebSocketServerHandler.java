@@ -14,7 +14,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 @Log4j2
 @NoArgsConstructor
-public class WebsocketServerHandler extends TextWebSocketHandler {
+public class WebSocketServerHandler extends TextWebSocketHandler {
 
     private final Map<String, WebSocketSession> sessions = new HashMap<>();
 

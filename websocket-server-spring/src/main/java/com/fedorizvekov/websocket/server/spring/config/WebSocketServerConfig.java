@@ -1,6 +1,6 @@
 package com.fedorizvekov.websocket.server.spring.config;
 
-import com.fedorizvekov.websocket.server.spring.handler.WebsocketServerHandler;
+import com.fedorizvekov.websocket.server.spring.handler.WebSocketServerHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
@@ -9,11 +9,11 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 @Configuration
 @EnableWebSocket
-public class WebsocketServerConfig implements WebSocketConfigurer {
+public class WebSocketServerConfig implements WebSocketConfigurer {
 
     @Bean
-    public WebsocketServerHandler getWebsocketServerHandler() {
-        return new WebsocketServerHandler();
+    public WebSocketServerHandler getWebsocketServerHandler() {
+        return new WebSocketServerHandler();
     }
 
 
