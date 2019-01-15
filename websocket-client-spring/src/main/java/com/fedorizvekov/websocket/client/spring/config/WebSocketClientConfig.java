@@ -1,6 +1,6 @@
 package com.fedorizvekov.websocket.client.spring.config;
 
-import com.fedorizvekov.websocket.client.spring.service.impl.TextHandler;
+import com.fedorizvekov.websocket.client.spring.service.impl.WebSocketHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ public class WebSocketClientConfig {
     @Bean
     public WebSocketConnectionManager getWebSocketConnectionManager(
             StandardWebSocketClient webSocketClient,
-            TextHandler webSocketHandler,
+            WebSocketHandler webSocketHandler,
             @Value("${websocket.server.url}") String url
     ) {
         return new WebSocketConnectionManager(webSocketClient, webSocketHandler, url);

@@ -1,0 +1,6 @@
+server:
+  port: 8085
+
+websocket:
+  server:
+    url: ws://localhost:8084/messenger

@@ -1,6 +1,7 @@
 package com.fedorizvekov.websocket.client.spring.service.impl;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import com.fedorizvekov.websocket.client.spring.model.WebSocketSessionWrapper;
 import com.fedorizvekov.websocket.client.spring.service.WebSocketClientService;
@@ -48,8 +49,9 @@ public class WebSocketClientServiceImpl implements WebSocketClientService {
                 }
             }
 
-        } catch (Exception exception) {
-            log.error("Something went wrong, because: ", exception);
+        } catch (IOException exception) {
+            log.error("IOException, because: {}", exception.getMessage());
+            throw new RuntimeException("IOException, because: " + exception.getMessage());
         }
     }
 
