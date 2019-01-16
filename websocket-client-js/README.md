@@ -1,5 +1,11 @@
-# Websocket-client-js
-This project is a simple WebSocket client messenger implemented as an HTML form. It connects to a WebSocket server, allowing users to send and receive messages.
+# Websocket client js
+
+This project is a simple WebSocket client messenger implemented as an HTML form. It connects to a WebSocket server, allowing users to send
+and receive messages.
+
+## Table of Contents
+
+* [Return to main README.md](../README.md#project-framework-examples)
 
 1. Open the `websocket-client/index.html` file in a web browser.
 2. Enter the WebSocket server details in the "Host" input field (`ws://localhost:8081/messenger`).
