@@ -11,15 +11,16 @@ import java.util.Set;
 import org.eclipse.jetty.websocket.api.RemoteEndpoint;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.UpgradeRequest;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class MessengerWebSocketTest {
+@ExtendWith(MockitoExtension.class)
+class MessengerWebSocketTest {
 
     @InjectMocks
     private MessengerWebSocket messengerWebSocket;
@@ -32,15 +33,16 @@ public class MessengerWebSocketTest {
     private RemoteEndpoint remoteEndpoint;
 
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         when(session.getUpgradeRequest()).thenReturn(upgradeRequest);
         when(upgradeRequest.getParameterMap()).thenReturn(Map.of("username", singletonList("TestUserName")));
     }
 
 
+    @DisplayName("Should connect session")
     @Test
-    public void should_OnConnect() throws Exception {
+    void shouldConnectSession() throws Exception {
         when(session.getRemote()).thenReturn(remoteEndpoint);
 
         messengerWebSocket.onConnect(session);
@@ -50,8 +52,9 @@ public class MessengerWebSocketTest {
     }
 
 
+    @DisplayName("Should close session")
     @Test
-    public void should_OnClose() throws Exception {
+    void shouldCloseSession() throws Exception {
         getPrivateSessions().add(session);
 
         messengerWebSocket.onClose(session, 1000, "Normal closure");
@@ -61,8 +64,9 @@ public class MessengerWebSocketTest {
     }
 
 
+    @DisplayName("Should send message")
     @Test
-    public void should_OnMessage() throws Exception {
+    void shouldSendMessage() throws Exception {
         getPrivateSessions().add(session);
         when(session.getRemote()).thenReturn(remoteEndpoint);
 
