@@ -73,21 +73,6 @@
                 <version>${httpcomponents.httpclient.version}</version>
             </dependency>
             <dependency>
-                <groupId>jakarta.xml.ws</groupId>
-                <artifactId>jakarta.xml.ws-api</artifactId>
-                <version>${jakarta.xml.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>jakarta.xml.bind</groupId>
-                <artifactId>jakarta.xml.bind-api</artifactId>
-                <version>${jakarta.xml.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>jakarta.jws</groupId>
-                <artifactId>jakarta.jws-api</artifactId>
-                <version>${jakarta.jws-api.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-rt</artifactId>
                 <version>${sun.xml.jaxws-rt.version}</version>

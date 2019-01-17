@@ -6,20 +6,22 @@ import java.io.FileReader;
 import javax.xml.bind.JAXBContext;
 import javax.xml.stream.XMLInputFactory;
 import com.fedorizvekov.soap.server.jax.ws.model.UserDto;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class RegistrationServiceImplTest {
+@ExtendWith(MockitoExtension.class)
+class RegistrationServiceImplTest {
 
     @InjectMocks
     private RegistrationServiceImpl registrationService;
 
 
+    @DisplayName("Should return user data")
     @Test
-    public void should_return_user_data() throws Exception {
+    void shouldReturn_userData() throws Exception {
         var streamReader = XMLInputFactory.newFactory().createXMLStreamReader(new FileReader("client_request.xml"));
 
         while (streamReader.hasNext() && !(streamReader.isStartElement() && "registrationRequest".equals(streamReader.getLocalName()))) {
@@ -31,7 +33,7 @@ public class RegistrationServiceImplTest {
 
         var result = registrationService.registration(userDto);
 
-        assertThat(result).isEqualTo("REGISTRATION COMPLETED, User contain: ( email = test@email.com, firstName = TestFirstName, lastName = TestLastName )" );
+        assertThat(result).isEqualTo("REGISTRATION COMPLETED, UserDto(email=test@email.com, firstName=TestFirstName, lastName=TestLastName)");
     }
 
 }
