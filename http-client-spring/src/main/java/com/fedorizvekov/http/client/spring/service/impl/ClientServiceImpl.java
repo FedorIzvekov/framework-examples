@@ -18,7 +18,7 @@ public class ClientServiceImpl implements ClientService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${server.url}")
+    @Value("${request.url}")
     private String url;
 
     @Value("${request.json}")
@@ -29,9 +29,7 @@ public class ClientServiceImpl implements ClientService {
 
         try {
             var response = restTemplate.exchange(
-                    RequestEntity.post(URI.create(url))
-                            .contentType(APPLICATION_JSON)
-                            .body(requestBody),
+                    RequestEntity.post(URI.create(url)).contentType(APPLICATION_JSON).body(requestBody),
                     String.class
             );
 

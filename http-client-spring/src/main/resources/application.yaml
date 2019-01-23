@@ -1,0 +1,11 @@
+server:
+  port: 8084
+
+logging:
+  level:
+    com.fedorizvekov.http.client.spring: INFO
+    org.springframework: INFO
+
+request:
+  url: http://localhost:8083/users
+  json: "{\"email\": \"client@email.com\", \"firstName\": \"clientFirstName\", \"lastName\": \"clientLastName\"}"

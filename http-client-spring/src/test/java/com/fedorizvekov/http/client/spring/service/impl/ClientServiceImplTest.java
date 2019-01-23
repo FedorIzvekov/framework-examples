@@ -8,19 +8,20 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import java.net.URI;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ClientServiceImplTest {
+@ExtendWith(MockitoExtension.class)
+class ClientServiceImplTest {
 
     private final String url = "http://example.com";
     private final String requestBody = "{\"key\":\"value\"}";
@@ -32,15 +33,16 @@ public class ClientServiceImplTest {
     private RestTemplate restTemplate;
 
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         ReflectionTestUtils.setField(service, "url", url);
         ReflectionTestUtils.setField(service, "requestBody", requestBody);
     }
 
 
+    @DisplayName("Should exchange rest template")
     @Test
-    public void should_exchange_restTemplate() {
+    void shouldExchange_restTemplate() {
         when(restTemplate.exchange(any(RequestEntity.class), eq(String.class)))
                 .thenReturn(new ResponseEntity<>("Response body", CREATED));
 
