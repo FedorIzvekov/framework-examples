@@ -7,7 +7,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,16 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RegistrationController {
 
-    @PostMapping("/registration")
-    @ResponseBody
+    @PostMapping("/users")
     @ResponseStatus(HttpStatus.CREATED)
     public String registration(@Valid @RequestBody UserDto userDto, HttpServletRequest request) {
 
         log.info("REQUEST POST endpoint {}", request.getRequestURL().toString());
 
-        log.info("Request contain user: {}", userDto.toString());
-
-        return "REGISTRATION COMPLETED, " + userDto;
+        return userDto.toString();
 
     }
 

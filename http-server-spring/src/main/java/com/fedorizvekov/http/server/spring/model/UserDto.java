@@ -9,7 +9,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString(of = {"email", "firstName", "lastName"})
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto {
 

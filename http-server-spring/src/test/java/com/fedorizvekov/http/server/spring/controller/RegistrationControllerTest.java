@@ -1,59 +1,55 @@
 package com.fedorizvekov.http.server.spring.controller;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(RegistrationController.class)
-public class RegistrationControllerTest {
+class RegistrationControllerTest {
+
+    private final String endpoint = "/users";
 
     @Autowired
     private MockMvc mockMvc;
 
-
+    @DisplayName("Should return CREATED and user data")
     @Test
-    public void should_return_CREATED_and_user_data() throws Exception {
-        mockMvc.perform(post("/registration")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"email\": \"test@email.com\", \"name\": \"TestName\"}"))
+    void shouldReturn_CREATED_andUserData() throws Exception {
+        mockMvc.perform(post(endpoint).contentType(APPLICATION_JSON).content("{\"email\": \"test@email.com\", \"name\": \"TestName\"}"))
                 .andExpect(status().isCreated())
-                .andExpect(content().string("REGISTRATION COMPLETED, UserDto(email=test@email.com, firstName=TestName, lastName=null)"));
+                .andExpect(content().string("UserDto(email=test@email.com, firstName=TestName, lastName=null)"));
     }
 
 
+    @DisplayName("Should return CREATED and full user data")
     @Test
-    public void should_return_CREATED_and_full_user_data() throws Exception {
-        mockMvc.perform(post("/registration")
-                        .contentType(MediaType.APPLICATION_JSON)
+    void shouldReturn_CREATED_andFullUserData() throws Exception {
+        mockMvc.perform(post(endpoint).contentType(APPLICATION_JSON)
                         .content("{\"email\": \"test@email.com\", \"firstName\": \"TestFirstName\", \"lastName\": \"TestLastName\", \"unknownParameter\": \"unknownValue\"}"))
                 .andExpect(status().isCreated())
-                .andExpect(content().string("REGISTRATION COMPLETED, UserDto(email=test@email.com, firstName=TestFirstName, lastName=TestLastName)"));
+                .andExpect(content().string("UserDto(email=test@email.com, firstName=TestFirstName, lastName=TestLastName)"));
     }
 
 
+    @DisplayName("Should return BAD_REQUEST with invalid request body")
     @Test
-    public void should_return_BAD_REQUEST_invalid_request_body() throws Exception {
-        mockMvc.perform(post("/registration")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("Bad request"))
+    void shouldReturn_BAD_REQUEST_withInvalidRequestBody() throws Exception {
+        mockMvc.perform(post(endpoint).contentType(APPLICATION_JSON).content("Bad request"))
                 .andExpect(status().isBadRequest());
     }
 
 
+    @DisplayName("Should return BAD_REQUEST missing required parameters")
     @Test
-    public void should_return_BAD_REQUEST_missing_required_parameters() throws Exception {
-        mockMvc.perform(post("/registration")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"firstName\": \"TestFirstName\"}"))
+    void shouldReturn_BAD_REQUEST_missingRequiredParameters() throws Exception {
+        mockMvc.perform(post(endpoint).contentType(APPLICATION_JSON).content("{\"firstName\": \"TestFirstName\"}"))
                 .andExpect(status().isBadRequest());
     }
 
