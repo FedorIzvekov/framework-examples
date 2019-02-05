@@ -3,6 +3,7 @@ Project demonstrating interactions with various frameworks and protocols.
 
 This project has modules: 
 * [http-client-httpcomponents](http-client-httpcomponents/README.md#http-client-httpcomponents)
+* [http-client-micronaut](http-client-micronaut/README.md#http-client-micronaut)
 * [http-client-spring](http-client-spring/README.md#http-client-spring)
 * [http-server-micronaut](http-server-micronaut/README.md#http-server-micronaut)
 * [http-server-servlet](http-server-servlet/README.md#http-server-servlet)
