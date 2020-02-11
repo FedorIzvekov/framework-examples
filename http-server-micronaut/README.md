@@ -7,6 +7,7 @@ This project implements HTTP server using Micronaut framework
 * [Return to main README.md](../README.md#project-framework-examples)
 * [Building and Running](#building-and-running)
 * [Checking](#checking)
+* [Stopping](#stopping)
 
 ## Building and Running
 
@@ -36,4 +37,12 @@ curl -v -i -X POST -H 'Content-Type: application/json' -d '{"email": "test@email
 
 ```
 curl -v -i -X POST -H 'Content-Type: application/json' -d '{"email": "test@email.com", "firstName": "TestFirstName", "lastName": "TestLastName"}' http://localhost:8086/users
+```
+
+## Stopping
+
+Shutdown application:
+
+```
+curl -v -X POST http://localhost:8086/stop
 ```
