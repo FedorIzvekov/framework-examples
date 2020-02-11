@@ -62,8 +62,12 @@ class ServerServiceImplTest {
         verify(server).join();
 
         assertAll(
-                () -> assertThat(captureServletHolder.getValue().getServlet()).isInstanceOf(UserServlet.class),
-                () -> assertThat(captureFilterHolder.getValue().getFilter()).isInstanceOf(CorsFilter.class)
+                () -> assertThat(captureServletHolder.getValue())
+                        .isNotNull()
+                        .isInstanceOf(ServletHolder.class),
+                () -> assertThat(captureFilterHolder.getValue())
+                        .isNotNull()
+                        .isInstanceOf(FilterHolder.class)
         );
     }
 
