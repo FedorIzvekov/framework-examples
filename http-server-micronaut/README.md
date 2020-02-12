@@ -39,6 +39,10 @@ curl -v -i -X POST -H 'Content-Type: application/json' -d '{"email": "test@email
 curl -v -i -X POST -H 'Content-Type: application/json' -d '{"email": "test@email.com", "firstName": "TestFirstName", "lastName": "TestLastName"}' http://localhost:8086/users
 ```
 
+```
+curl -X GET http://localhost:8086/users
+```
+
 ## Stopping
 
 Shutdown application:

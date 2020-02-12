@@ -1,12 +1,14 @@
 package com.fedorizvekov.http.server.micronaut.controller;
 
+import java.util.List;
 import javax.validation.Valid;
-import com.fedorizvekov.http.server.micronaut.model.UserDto;
+import com.fedorizvekov.http.server.micronaut.model.User;
 import com.fedorizvekov.http.server.micronaut.service.UserService;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Status;
 import lombok.RequiredArgsConstructor;
@@ -22,11 +24,22 @@ public class RegistrationController {
 
     @Post(value = "/users")
     @Status(HttpStatus.CREATED)
-    public UserDto createUser(@Valid @Body UserDto userDto, HttpRequest request) {
+    public User createUser(@Valid @Body User user, HttpRequest request) {
 
-        log.info("REQUEST POST endpoint {}", request.getUri().toString());
+        log.info("REQUEST {} endpoint {}", request.getMethod().toString(), request.getUri().toString());
 
-        return userService.saveUser(userDto);
+        return userService.saveUser(user);
+
+    }
+
+
+    @Get(value = "/users")
+    @Status(HttpStatus.OK)
+    public List<User> createUser(HttpRequest request) {
+
+        log.info("REQUEST {} endpoint {}", request.getMethod().toString(), request.getUri().toString());
+
+        return userService.findAll();
 
     }
 

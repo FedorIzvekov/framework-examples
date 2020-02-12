@@ -1,9 +1,12 @@
 package com.fedorizvekov.http.server.micronaut.service;
 
-import com.fedorizvekov.http.server.micronaut.model.UserDto;
+import java.util.List;
+import com.fedorizvekov.http.server.micronaut.model.User;
 
 public interface UserService {
 
-    UserDto saveUser(UserDto userDto);
+    User saveUser(User user);
+
+    List<User> findAll();
 
 }
